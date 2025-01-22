@@ -1,0 +1,13 @@
+services:
+  MyFakeSSH:
+    build: .
+    image: licsber/myfakessh:latest
+    restart: always
+    container_name: myfakessh
+    command: /log
+    volumes:
+      - /licsber/docker/myfakessh:/log
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    ports:
+      - '22:22'
