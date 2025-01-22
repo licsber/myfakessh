@@ -1,7 +1,7 @@
 # MyFakeSSH
 
 ```bash
-go mod init myfakessh
+go mod init git.licsber.site/go/myfakessh
 go mod tidy
 ```
 
