@@ -1,7 +1,7 @@
 services:
   MyFakeSSH:
     build: .
-    image: licsber/myfakessh:latest
+    image: registry.cn-beijing.aliyuncs.com/licsber/myfakessh:latest
     restart: always
     container_name: myfakessh
     command: /log
