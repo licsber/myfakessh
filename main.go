@@ -15,6 +15,7 @@ import (
 var (
 	errBadPassword = errors.New("permission denied")
 	serverVersions = []string{
+		"SSH-2.0-OpenSSH_6.0p1 Debian-4+deb7u2",
 		"SSH-2.0-OpenSSH_9.9",
 	}
 )
