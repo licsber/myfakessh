@@ -56,7 +56,7 @@ func logConnect(conn net.Conn) {
 	insertSQL := `INSERT INTO connect_attempts (time, ip, port) VALUES (?, ?, ?)`
 	_, err := db.Exec(insertSQL, currentTime, host, portInt)
 	if err != nil {
-		log.Println("Failed to insert connect attempt:", err)
+		log.Fatal("Failed to insert connect attempt:", err)
 		return
 	}
 }

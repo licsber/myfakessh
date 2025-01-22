@@ -1,8 +1,8 @@
 package main
 
 import (
+	"crypto/ed25519"
 	"crypto/rand"
-	"crypto/rsa"
 	"errors"
 	"log"
 	"net"
@@ -15,8 +15,9 @@ import (
 var (
 	errBadPassword = errors.New("permission denied")
 	serverVersions = []string{
-		"SSH-2.0-OpenSSH_6.0p1 Debian-4+deb7u2",
-		"SSH-2.0-OpenSSH_9.9",
+		"SSH-2.0-OpenSSH_9.2p1 Debian-2+deb12u4", // My Server Truely
+		"SSH-2.0-OpenSSH_6.0p1 Debian-4+deb7u2", // cowrie default
+		"SSH-2.0-OpenSSH_9.9", // Manjaro
 	}
 )
 
@@ -29,12 +30,12 @@ func main() {
 	defer db.Close()
 
 	serverConfig := &ssh.ServerConfig{
-		MaxAuthTries:     6,
+		MaxAuthTries:     3,
 		PasswordCallback: passwordCallback,
 		ServerVersion:    serverVersions[0],
 	}
 
-	privateKey, _ := rsa.GenerateKey(rand.Reader, 2048)
+	_, privateKey, _ := ed25519.GenerateKey(rand.Reader)
 	signer, _ := ssh.NewSignerFromSigner(privateKey)
 	serverConfig.AddHostKey(signer)
 
