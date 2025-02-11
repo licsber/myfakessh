@@ -2,11 +2,11 @@ services:
   MyFakeSSH:
     build: .
     image: registry.cn-beijing.aliyuncs.com/licsber/myfakessh:latest
-    restart: unless-stopped
     container_name: myfakessh
+    restart: unless-stopped
     command: /log
     volumes:
-      - /licsber/docker/myfakessh:/log
+      - /z/docker/myfakessh:/log
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
     ports:
