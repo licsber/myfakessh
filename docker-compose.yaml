@@ -2,7 +2,7 @@ services:
   MyFakeSSH:
     build: .
     image: registry.cn-beijing.aliyuncs.com/licsber/myfakessh:latest
-    restart: always
+    restart: unless-stopped
     container_name: myfakessh
     command: /log
     volumes:
@@ -10,4 +10,4 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
     ports:
-      - '22:22'
+      - "22:22"
