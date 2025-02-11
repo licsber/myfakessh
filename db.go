@@ -39,7 +39,9 @@ func initDB() {
         client_version TEXT NOT NULL,
         username TEXT NOT NULL,
         password TEXT NOT NULL
-    );`
+    );
+	PRAGMA busy_timeout = 2000;
+	`
 	_, err = db.Exec(createTableSQL)
 	if err != nil {
 		log.Fatal(err)
